@@ -6,6 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Map;
 
+import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
@@ -31,7 +32,7 @@ public class pttExam {
 						.getFromHtml(uri)
 						.select("div#main-content");
 
-		for(element push : pushList){
+		for(Element push : pushList.select("div.push")){
 
 			/*
 			data sample
@@ -43,12 +44,12 @@ public class pttExam {
     		</div>
 			*/
 
-			if(push.select("span:containsOwn(噓)")){
+			String sign = push.select(" span:containsOwn(噓)").text();
+			String content = push.select("span:containsOwn(噓)~span.f3.push-content").text();
 
+			System.out.println(sign + " " + content );
 
-
-			}
-
+			//System.out.println(content);
 		}
 
 		// set to debug level
@@ -64,6 +65,7 @@ public class pttExam {
 		//		.getFromHtml(uri)
 		//		.select(".rtddt");
 
+		/*
 		System.out.println(
 				CrawlerPack.start()
 
@@ -84,5 +86,6 @@ public class pttExam {
 			    .select("span:containsOwn(噓)~span.f3.push-content")
 				// <div id="main-content" class="bbs-screen bbs-content">
 		);
+		*/
 	}
 }
