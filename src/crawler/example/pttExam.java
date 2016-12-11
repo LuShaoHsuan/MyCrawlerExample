@@ -36,11 +36,12 @@ public class pttExam {
     		</div>
 			*/
 
+			String uid = push.select("span:containsOwn(噓)+span").text();
 			String sign = push.select(" span:containsOwn(噓)").text();
 			String content = push.select("span:containsOwn(噓)~span.f3.push-content").text();
 
 			if(sign.equals("噓")) {
-				System.out.println(sign + " " + content);
+				System.out.println(uid + " " + sign + " " + content);
 			}
 			//System.out.println(content);
 		}
