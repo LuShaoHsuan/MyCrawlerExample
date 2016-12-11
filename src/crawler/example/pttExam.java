@@ -1,18 +1,9 @@
 package crawler.example;
 
 import com.github.abola.crawler.CrawlerPack;
-import org.apache.commons.logging.impl.SimpleLog;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Map;
-
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-
-import com.github.abola.crawler.CrawlerPack;
-import com.google.common.base.Strings;
-import com.google.common.collect.ImmutableSortedMap;
 
 /**
  * 爬蟲包程式的全貌，就只有這固定的模式
@@ -20,6 +11,7 @@ import com.google.common.collect.ImmutableSortedMap;
  * @author Abola Lee
  *
  */
+
 public class pttExam {
 	// commit test
 	public static void main(String[] args) {
@@ -47,45 +39,11 @@ public class pttExam {
 			String sign = push.select(" span:containsOwn(噓)").text();
 			String content = push.select("span:containsOwn(噓)~span.f3.push-content").text();
 
-			System.out.println(sign + " " + content );
-
+			if(sign.equals("噓")) {
+				System.out.println(sign + " " + content);
+			}
 			//System.out.println(content);
 		}
 
-		// set to debug level
-		//CrawlerPack.setLoggerLevel(SimpleLog.LOG_LEVEL_DEBUG);
-
-		// turn off logging
-		//CrawlerPack.setLoggerLevel(SimpleLog.LOG_LEVEL_OFF);
-
-		// 遠端資料路徑
-
-
-		//Elements newsList = CrawlerPack.start()
-		//		.getFromHtml(uri)
-		//		.select(".rtddt");
-
-		/*
-		System.out.println(
-				CrawlerPack.start()
-
-				// 參數設定
-			    .addCookie("over18","1")	// 設定cookie
-				//.setRemoteEncoding("big5")// 設定遠端資料文件編碼
-				
-				// 選擇資料格式 (三選一)
-				//.getFromJson(uri)
-			    .getFromHtml(uri)
-			    //.getFromXml(uri)
-			    
-			    // 這兒開始是 Jsoup Document 物件操作
-			    //.select(".css .selector ")
-				//.select(".f3.push-content")
-				//.select("div.push>span.f3.push-content")
-				//.select("[class=push]")
-			    .select("span:containsOwn(噓)~span.f3.push-content")
-				// <div id="main-content" class="bbs-screen bbs-content">
-		);
-		*/
 	}
 }
