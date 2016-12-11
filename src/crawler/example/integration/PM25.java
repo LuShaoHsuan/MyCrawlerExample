@@ -40,11 +40,22 @@ public class PM25 {
 //        <AQX>
         Document jsoupDoc = CrawlerPack.start().getFromXml(uri);
 
+        System.out.println("county"+"\t"+"site"+"\t"+"status"+"\t"+"pm2.5");
 
         for(Element elem: jsoupDoc.select("Data")){
 //            System.out.println(elem.toString());
-            System.out.println( elem.getElementsByTag("pm2.5").text() );
 
+
+
+            System.out.println( elem.getElementsByTag("County").text()
+                    + "\t" + elem.getElementsByTag("SiteName").text()
+                    + "\t" + elem.getElementsByTag("Status").text()
+                    + "\t" + elem.getElementsByTag("pm2.5").text()
+            );
+
+//            System.out.println( elem.getElementsByTag("SiteName").text() );
+//            System.out.println( elem.getElementsByTag("Status").text() );
+//            System.out.println( elem.getElementsByTag("pm2.5").text() );
         }
     }
 }
